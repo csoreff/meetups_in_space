@@ -30,7 +30,32 @@ def authenticate!
 end
 
 get '/' do
+  redirect '/meetups'
+end
+
+get '/meetups' do
   erb :index
+end
+
+get '/newmeetup' do
+  erb :create_meetup
+end
+
+post '/newmeetup' do
+  if signed_in?
+    new_meetup = Meetup.create(name: params[:meetup_name], location: params[:location],
+      description: params[:description])
+    new_meetup.save
+    redirect "/meetups/#{new_meetup.id}"
+  else
+    flash[:notice] = 'You need to sign in if you want to do that!'
+    redirect '/newmeetup'
+  end
+end
+
+get '/meetups/:meetup' do
+  @meetup = Meetup.find(params[:meetup])
+  erb :meetup_show
 end
 
 get '/auth/github/callback' do
@@ -40,7 +65,7 @@ get '/auth/github/callback' do
   set_current_user(user)
   flash[:notice] = "You're now signed in as #{user.username}!"
 
-  redirect '/'
+  redirect '/meetups'
 end
 
 get '/sign_out' do

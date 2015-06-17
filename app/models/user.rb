@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
       avatar_url: auth.info.image
     )
   end
+
   has_many :meetup_users
   has_many :meetups, through: :meetup_users
 end

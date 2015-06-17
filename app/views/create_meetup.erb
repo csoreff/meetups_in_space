@@ -1,0 +1,22 @@
+<div>
+<h1>New Meetup</h1>
+<form action="/newmeetup" method="POST">
+  <table>
+    <tr>
+      <td><label for="meetup_name">Event Name</label></td>
+      <td><input type="text" id="meetup_name" name = 'meetup_name' required></td>
+    </tr>
+    <tr>
+      <td><label for="location">Location</label></td>
+      <td><input type="text" name = 'location' id="location" required></td>
+    </tr>
+    <tr>
+      <td><label for="description">Description</label></td>
+      <td><textarea name='description' id="description" required>Enter your description here.</textarea></td>
+    </tr>
+    <tr>
+      <td><button type="submit">Submit</button></td>
+    </tr>
+  </table>
+</form>
+</div>

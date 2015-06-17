@@ -1,1 +1,7 @@
-<h1><%= @title %></h1>
+<h1>Meetups</h1>
+
+<ul>
+  <%Meetup.order(:name).each do |event| %>
+    <li><a href="./meetups/<%=event.id%>"><%= event.name %></a></li>
+  <% end %>
+</ul>
