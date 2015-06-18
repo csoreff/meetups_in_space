@@ -18,4 +18,10 @@ class User < ActiveRecord::Base
 
   has_many :meetup_users
   has_many :meetups, through: :meetup_users
+
+  validates :provider, presence: true
+  validates :uid, presence: true
+  validates :username, presence: true
+  validates :email, presence: true
+  validates :avatar_url, presence: true
 end

@@ -55,7 +55,16 @@ end
 
 get '/meetups/:meetup' do
   @meetup = Meetup.find(params[:meetup])
+  @meetup_users = @meetup.users
   erb :meetup_show
+end
+
+post '/meetups/:meetup' do
+  if signed_in?
+    join_meetup
+  else
+    authenticate!
+  end
 end
 
 get '/auth/github/callback' do

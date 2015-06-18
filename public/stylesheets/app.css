@@ -42,3 +42,11 @@ a:visited {
 form button, textarea, input {
   color: #000;
 }
+
+#join_meetup {
+  color: black;
+}
+
+ul {
+  list-style-type: none;
+}

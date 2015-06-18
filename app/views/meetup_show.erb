@@ -2,4 +2,16 @@
 <h4><%=@meetup.location%></h4>
 <h4><%=@meetup.description%></h4>
 <br>
-<a href="/meetups">Return</a>
+<h3> Attendees: </h3>
+<ul>
+  <% @meetup_users.each do |attendee| %>
+    <li><%= attendee.username %></li>
+    <li><img src="<%= attendee.avatar_url %>"></li>
+    <br>
+  <% end %>
+</ul>
+<form action="/meetups/<%=@meetup.id%>" method="post">
+<button type="submit" name="join" value="join"><div id="join_meetup">Join Meetup</div></button>
+</form>
+<br>
+<a href="/meetups"><button type="button" name="return" value="return"><div id="join_meetup">Return</div></button></a></div>
